@@ -30,10 +30,10 @@ function onFormInput(event) {
 
 function onClick(event) {
   event.preventDefault();
+  refs.form.reset();
 
   let amount = 1;
   let time = Number(data.delay);
-
   while (amount <= data.amount) {
     createPromise(amount, time)
       .then(({ position, delay }) => {
@@ -49,4 +49,5 @@ function onClick(event) {
     amount += 1;
     time += Number(data.step);
   }
+  data = {};
 }

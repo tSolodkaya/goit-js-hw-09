@@ -7,7 +7,7 @@ const refs = {
   stopBtn: document.querySelector('[data-stop]'),
   body: document.querySelector('body'),
 };
-
+refs.stopBtn.disabled = true;
 refs.startBtn.addEventListener('click', onStartClick);
 refs.stopBtn.addEventListener('click', onStopClick);
 
@@ -15,6 +15,7 @@ let intervalId = null;
 
 function onStartClick(event) {
   intervalId = setInterval(setStyles, 1000);
+  refs.stopBtn.disabled = false;
 }
 
 function setStyles() {
@@ -25,4 +26,5 @@ function setStyles() {
 function onStopClick() {
   clearInterval(intervalId);
   refs.startBtn.disabled = false;
+  refs.stopBtn.disabled = true;
 }
